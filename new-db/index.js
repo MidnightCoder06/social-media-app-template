@@ -1,4 +1,5 @@
 const { Client } = require('pg')
+// ^ same thing:    const Client = require('pg').Client  
 
 const client = new Client({
     user: 'postgres',
@@ -10,5 +11,5 @@ const client = new Client({
 
 client.connect()
 .then(() => console.log("connected successfully"))
-.catch(e => console.error('something went wrong'))
+.catch(e => console.error(e))
 .finally(() => client.end())

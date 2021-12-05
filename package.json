@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start-ux": "react-scripts start",
+    "start-server": "nodemon server/index.js",
     "test-connection": "nodemon ./new-db/index.js",
     "seed:dev": "nodemon ./db/seed.js"
   },
@@ -11,9 +13,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pg": "^8.7.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

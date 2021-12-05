@@ -8,7 +8,7 @@ Running kill on the pid (second column, kill 13268 here) should stop it.
 
 3. CREATE DATABASE tumblr_clone_dev;
     # check for tables -> \dt
-    # check for databases -> \l
+    # check for databases (this command shows all of your databases) -> \l
 4. CREATE TABLE users ( id SERIAL PRIMARY KEY, username VARCHAR(255) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL );
     # take a peek at the table you defined -> \d
 5. INSERT INTO users (username, password) VALUES ('albert', 'cool_guy91'), ('sandra', 'funny_girl89'), ('george', 'skinny_guy12');
@@ -19,6 +19,5 @@ Running kill on the pid (second column, kill 13268 here) should stop it.
 
 ===
 
-npm install pg # node's postgresql adapter 
-npm install nodemon --save-dev
+
 

@@ -1,3 +1,16 @@
+Pern Stack Tutorials to watch:
+
+https://www.youtube.com/watch?v=5vF0FGfa0RQ
+https://www.youtube.com/watch?v=7UQBMb8ZpuE
+https://www.youtube.com/watch?v=cjqfF5hyZFg 
+https://www.youtube.com/watch?v=sQBA0sq9G0A
+https://www.youtube.com/watch?v=_Mun4eOOf2Q
+https://www.youtube.com/watch?v=vxu1RrR0vbw
+
+Look up some Bootstrap tutorials to watch so you can add that in here (the classnames are already here)
+
+===
+
 The Azure cloud platform allows you to use any of the Azure databases (as services) or bring your own database. Once your server and database are set up, your existing code will only need to change the connection settings.
 
 When you do use a database on Azure, there are several common tasks you need to accomplish to use the database from your JavaScript app. 
