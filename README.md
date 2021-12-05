@@ -138,6 +138,3 @@ App (the client) that asked for the token. In the case of web apps, this app mig
 
 
 ===
-
-
-TODO: go through pt. 1 and step by step make comments so you understand everything that is going on

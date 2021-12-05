@@ -16,6 +16,9 @@ Running kill on the pid (second column, kill 13268 here) should stop it.
 7. SELECT id, username FROM users WHERE username='albert' AND password='cool_guy91';
 8. SELECT id, username FROM users WHERE username='sandra' AND password='hot_girl_summer';
 
+
+===
+
 npm install pg # node's postgresql adapter 
 npm install nodemon --save-dev
 

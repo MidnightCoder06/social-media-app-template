@@ -1,12 +1,20 @@
+// https://node-postgres.com/
+// https://www.npmjs.com/package/pg
 const { Client } = require('pg') // imports the pg module
 
-const client = new Client('postgres://localhost:5432/tumblr_clone_dev');
+// create a client object and specify connection paramters 
+  // host
+  // default user
+  // default port 
+  // default database name
+  // default password
+const client = new Client('postgres://localhost:5432/social_media_app_template_dev');
 
 /* alternative approach 
 const client = new Client({
     user: 'postgres',
     host: 'localhost',
-    database: 'tumblr_clone_dev',
+    database: 'social_media_app_template_dev',
     password: '',
     port: 5432,
 });
