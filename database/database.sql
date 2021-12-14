@@ -1,3 +1,5 @@
+-- psql
+-- or
 -- psql -U postgres
 CREATE DATABASE social_media_app_template_dev;
 
