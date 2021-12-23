@@ -1,6 +1,5 @@
 Roadmap
 
-
 1. Create a sign up flow 
     3a. look at examples and try to build it yourself
     3b. watch Preston's lectures on security & read Adobe notes on security and try to implement that 
@@ -9,6 +8,7 @@ Roadmap
         * Microsoft identity platform
         * azure key vault
         * azure active directory
+    4e. Context API
 2. Set up Microsoft Azure for postgres & Set up CosmoDB
 3. Add typescript & CSS Modules
 4. Explore using Microsoft Teams to implement video chat functionality into your app
