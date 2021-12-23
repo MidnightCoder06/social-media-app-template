@@ -1,7 +1,7 @@
 import React from "react";
 import SignInBtn from "./Buttons/SignInBtn";
 import SignUpBtn from "./Buttons/SignUpBtn";
-import './Buttons/Auth.css';
+import '../styles/Auth.css';
 
 const Home = () => {
     return (
