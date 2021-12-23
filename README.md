@@ -1,3 +1,37 @@
+Roadmap
+
+
+1. Create a sign up flow 
+    3a. look at examples and try to build it yourself
+    3b. watch Preston's lectures on security & read Adobe notes on security and try to implement that 
+    3c. watch a youtube video for good ui 
+    4d. read documentation and implement Microsoft stuff for managing accounts
+        * Microsoft identity platform
+        * azure key vault
+        * azure active directory
+2. Set up Microsoft Azure for postgres & Set up CosmoDB
+3. Add typescript & CSS Modules
+4. Explore using Microsoft Teams to implement video chat functionality into your app
+    * azure stream analytics
+5. Explore using Microsoft Outlook to send an email to the person you signed up
+    * graph to see what info you can get on teams and email 
+        * see about OneDrive storage as well
+6. push cosmodb and azure storage into azure data lake
+7. add telemetry * azure monitor & * azure portal 
+8. read the system design docs from grokking on social media apps + system design frontend articles / videos
+    a. implement azure redis cache 
+    b. Azure Load Balancer
+    c. Azure blob storage (images & videos)
+    d. newsfeed
+9. Complete codebase cleanup
+10. Host the app
+
+
+
+
+
+
+
 Pern Stack Tutorials to watch:
 
 https://www.youtube.com/watch?v=5vF0FGfa0RQ
@@ -16,18 +50,6 @@ The Azure cloud platform allows you to use any of the Azure databases (as servic
 When you do use a database on Azure, there are several common tasks you need to accomplish to use the database from your JavaScript app. 
 
 
-* Azure Database for SQL Server 
-* cosmos db
-* azure key vault
-* azure redis cache
-* azure active directory
-* portal 
-* graph
-* azure data factory
-* azure data lake
-* azure monitor
-* azure stream analytics
-* Microsoft identity platform
 
 Authentication is the process of proving that you are who you say you are. It's sometimes shortened to AuthN. The Microsoft identity platform uses the OpenID Connect protocol for handling authentication.
 
