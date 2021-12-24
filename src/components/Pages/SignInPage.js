@@ -1,4 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+/* TODO:
+
+To close out point 3a of #1 
+- have the sign-in button check if email & password is in database
+    - if so route to the posts page
+    - if not, show error text (make this a reusable component where you just pass in text as a prop)
+*/
 
 const SignInPage = () => {
 
@@ -29,7 +38,7 @@ const SignInPage = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h1> Sign In </h1>
-            <h3> New? Create an account </h3>
+            <h3> New? <Link to="/posts"> Create an account </Link> </h3>
             <h3> Email </h3>
             <input 
                 name="email"

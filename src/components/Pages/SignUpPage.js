@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
 
 const initialFormState = {
@@ -12,6 +13,7 @@ const initialFormState = {
 const SignUpPage = () => {
 
     const [signedUpEntity, setSignedUpEntity] = useState(initialFormState);
+    const navigate = useNavigate(); 
 
     const handleChange = (e) => {
         if (e.target.name == 'firstName') {
@@ -44,15 +46,13 @@ const SignUpPage = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('from frontend', signedUpEntity);
-
-       
-
         try {
             const response = await fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: { 'Content-Type': "application/json" },
                 body: JSON.stringify(signedUpEntity)
             });
+            navigate('/posts')
         } catch(err) {
             console.error(err.message)
         }

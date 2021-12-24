@@ -1,4 +1,5 @@
 Roadmap
+* do a codebase cleanup between each numerical milestone
 
 1. Create a sign up flow 
     3a. look at examples and try to build it yourself
@@ -8,7 +9,7 @@ Roadmap
         * azure key vault
         * azure active directory
     4e. Context API (store token & posts)
-2. Set up Microsoft Azure for postgres & Set up CosmoDB
+2. Set up Microsoft Azure for postgres & host the app on azure
 3. Add typescript & CSS Modules
 4. Explore using Microsoft Teams to implement video chat functionality into your app
     * azure stream analytics
@@ -21,9 +22,8 @@ Roadmap
     a. implement azure redis cache 
     b. Azure Load Balancer
     c. Azure blob storage (images & videos)
-    d. newsfeed, follow and blah blah
-9. Complete codebase cleanup
-10. Host the app
+    d. Set up CosmoDB
+    e. newsfeed, follow and blah blah
 
 
 
