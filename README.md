@@ -17,11 +17,11 @@ Roadmap
         * see about OneDrive storage as well
 6. push cosmodb and azure storage into azure data lake
 7. add telemetry * azure monitor & * azure portal 
-8. read the system design docs from grokking on social media apps + system design frontend articles / videos
+8. read the system design docs from grokking on social media apps + system design frontend articles / videos + react design patterns
     a. implement azure redis cache 
     b. Azure Load Balancer
     c. Azure blob storage (images & videos)
-    d. newsfeed
+    d. newsfeed, follow and blah blah
 9. Complete codebase cleanup
 10. Host the app
 

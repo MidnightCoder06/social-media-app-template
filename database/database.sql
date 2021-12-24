@@ -27,3 +27,7 @@ CREATE TABLE todo(
 -- SELECT * FROM todo;
 INSERT INTO todo(description) VALUES ('hello');
 -- SELECT * FROM todo;
+
+
+
+CREATE TABLE users(user_id SERIAL PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255), phone_number BIGINT, password VARCHAR(255));
