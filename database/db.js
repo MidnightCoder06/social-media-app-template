@@ -10,4 +10,26 @@ const pool = new Pool({
     port: 5432,
 });
 
-module.exports = pool;
+async function checkUserExistence(email, password) {
+    try {
+      const { rows: [ user ] } = await pool.query(`
+        SELECT email, password
+        FROM users
+        WHERE email=${ email } AND password=${ password }
+      `);
+  
+      if (!user) {
+        return null
+      }
+  
+      return user;
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+module.exports = { 
+    pool,
+    checkUserExistence
+}

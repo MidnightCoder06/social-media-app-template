@@ -7,6 +7,7 @@ To close out point 3a of #1
 - have the sign-in button check if email & password is in database
     - if so route to the posts page
     - if not, show error text (make this a reusable component where you just pass in text as a prop)
+        ^ternary showing / hiding based on useState -> setUserExistence
 */
 
 const SignInPage = () => {
@@ -21,6 +22,15 @@ const SignInPage = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('submit');
+
+        /*
+        if (checkUserExistence(newEntity.email, newEntity.password)) {
+            navigage('/posts')
+        } else {
+            setUserExistence(false)
+        }
+
+        */
     }
 
     const handleChange = e => {
