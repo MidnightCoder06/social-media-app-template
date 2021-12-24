@@ -2,13 +2,12 @@ Roadmap
 * do a codebase cleanup between each numerical milestone
 
 1. Create a sign up flow 
-    3a. look at examples and try to build it yourself
-    3b. watch Preston's lectures on security & read Adobe notes on security and try to implement that 
-    3c. read documentation and implement Microsoft stuff for managing accounts
+    3a. watch Preston's lectures on security & read Adobe notes on security and try to implement that 
+        - json web token & localstorage (store token & posts)
+    3b. read documentation and implement Microsoft stuff for managing accounts
         * Microsoft identity platform
         * azure key vault
         * azure active directory
-    4e. Context API (store token & posts)
 2. Set up Microsoft Azure for postgres & host the app on azure
 3. Add typescript & CSS Modules
 4. Explore using Microsoft Teams to implement video chat functionality into your app

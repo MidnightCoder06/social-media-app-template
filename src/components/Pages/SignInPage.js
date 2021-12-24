@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 /* TODO:
-
-To close out point 3a of #1 
-- have the sign-in button check if email & password is in database
-    - if so route to the posts page
-    - if not, show error text (make this a reusable component where you just pass in text as a prop)
+show error text (make this a reusable component where you just pass in text as a prop)
         ^ternary showing / hiding based on useState -> setUserExistence
 */
 
@@ -18,19 +14,35 @@ const SignInPage = () => {
     }
 
     const [newEntity, setNewEntity] = useState(initialFormState);
+    const [userExists, setUserExists] = useState(true);
+    const navigate = useNavigate();
+
+    /*
+    JSON.stringify
+
+    Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
+    @param value — A JavaScript value, usually an object or array, to be converted.
+    */
 
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('submit');
-
-        /*
-        if (checkUserExistence(newEntity.email, newEntity.password)) {
-            navigage('/posts')
-        } else {
-            setUserExistence(false)
+        try {
+            // TODO: create a base url variable
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(newEntity)
+            })
+            console.log('response', response)
+            if (response) {
+                navigate('/posts')
+            } else {
+                console.log('display error text')
+            }
+        } catch(err) {
+            console.error(err)
         }
-
-        */
     }
 
     const handleChange = e => {

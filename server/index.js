@@ -106,6 +106,26 @@ app.post('/users', async (req, res) => {
   }
 })
 
+// login -> create a user session 
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const existingUser = await pool.query('SELECT email, password FROM users WHERE email=$1 AND password=$2', [email, password]);
+    // if user exists -> rows: [ { email: 'mySecondLove', password: 'soulCoordinates' } ],
+    // if user doesn't exists -> rows: []
+    if (existingUser.rows[0]) {
+      res.json(existingUser.rows[0])
+    }
+  } catch(err) {
+    console.error(err.message)
+  }
+})
+
+
+
+
+
+
 app.listen(5000, () => {
   console.log('server has started on port 5000');
 });
