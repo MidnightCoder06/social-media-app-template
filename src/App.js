@@ -1,10 +1,9 @@
 import React from 'react';
-import InputTodo from './components/InputTodo';
-import ListTodos from './components/ListTodos';
 import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import SignInPage from './components/Pages/SignInPage';
 import SignUpPage from './components/Pages/SignUpPage';
+import PostContainer from './components/Posts/PostContainer';
 import './App.css';
 
 function App() {
@@ -14,10 +13,7 @@ function App() {
           <Route exact path="/" element={ <Home /> } />
           <Route path="/sign-in" element={ <SignInPage /> } />
           <Route path="/sign-up" element={ <SignUpPage /> } />
-          {/*
-          <InputTodo />
-          <ListTodos />
-        */}
+          <Route path="/posts" element={ <PostContainer /> } />
         </Routes>
       </div>
   );

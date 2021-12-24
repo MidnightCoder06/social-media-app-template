@@ -5,7 +5,7 @@ const initialFormState = {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: 0,
+    phoneNumber: '',
     password: ''
 }
 
@@ -43,7 +43,19 @@ const SignUpPage = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('submit');
+        console.log('from frontend', signedUpEntity);
+
+       
+
+        try {
+            const response = await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify(signedUpEntity)
+            });
+        } catch(err) {
+            console.error(err.message)
+        }
     }
 
     return (
@@ -75,8 +87,8 @@ const SignUpPage = () => {
             <h3> Phone Number* </h3>
             <input 
                 name="phoneNumber"
-                type="number"
-                placeholder="0000000000" 
+                type="text"
+                placeholder="000-000-0000" 
                 onChange={handleChange}
                 value={signedUpEntity.phoneNumber}
             />

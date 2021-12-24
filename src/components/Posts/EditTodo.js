@@ -17,7 +17,7 @@ const EditTodo = ({todo}) => {
       });
 
       // refresh so we can see the changes being done
-      window.location = '/';
+      // window.location = '/';
     } catch (err) {
       console.error(err.message)
     }

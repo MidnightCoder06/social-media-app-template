@@ -95,7 +95,29 @@ app.delete('/todos/:id', async (req, res) => {
 
 
 // post a user 
-app.post('/users')
+app.post('/users', async (req, res) => {
+  // console.log('from backend', req.body)
+  // const { firstName, lastName, email, phoneNumber, password } = req.body
+  // console.log('does firstName map', firstName)
+  try {
+    const { firstName, lastName, email, phoneNumber, password } = req.body
+
+
+    // let firstName = '1'
+    // let lastName = '2'
+    // let email = '3'
+    // let phoneNumber = '4'
+    // let password = '5'
+
+
+    const newUser = await pool.query('INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES($1, $2, $3, $4, $5)', [firstName, lastName, email, phoneNumber, password]);
+
+    console.log('newUser', newUser)
+    res.json(newUser.rows[0]);
+  } catch(err) {
+    console.error(err.message)
+  }
+})
 
 app.listen(5000, () => {
   console.log('server has started on port 5000');
