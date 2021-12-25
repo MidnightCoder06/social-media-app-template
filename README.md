@@ -6,3 +6,5 @@ Roadmap
 3. Set up Microsoft Azure for postgres & host the app on azure
 
 4. codebase cleanup & add more typescript
+
+5. add tests
