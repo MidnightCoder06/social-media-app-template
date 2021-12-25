@@ -4,19 +4,29 @@ Roadmap
 1. Create a sign up flow 
     3a. watch Preston's lectures on security & read Adobe notes on security and try to implement that 
         - json web token & localstorage (store token & posts)
+
+
     3b. read documentation and implement Microsoft stuff for managing accounts
-        * Microsoft identity platform
-        * azure key vault
-        * azure active directory
+        * Microsoft identity platform -> implements authentication & authorization for you
+            1. * azure active directory -> create an app registration 
+            https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-react 
+
+        
 2. Set up Microsoft Azure for postgres & host the app on azure
+
 3. Add typescript & CSS Modules
+
 4. Explore using Microsoft Teams to implement video chat functionality into your app
     * azure stream analytics
+
 5. Explore using Microsoft Outlook to send an email to the person you signed up
     * graph to see what info you can get on teams and email 
         * see about OneDrive storage as well
+
 6. push cosmodb and azure storage into azure data lake
+
 7. add telemetry * azure monitor & * azure portal 
+
 8. read the system design docs from grokking on social media apps + system design frontend articles / videos + react design patterns
     a. implement azure redis cache 
     b. Azure Load Balancer

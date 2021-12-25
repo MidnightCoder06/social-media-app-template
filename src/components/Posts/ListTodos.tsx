@@ -3,17 +3,17 @@ import EditTodo from './EditTodo';
 
 const ListTodos = () => {
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<any[]>([]);
 
   const deleteTodo = async (id) => {
     try {
       const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
         method: "DELETE"
       });
-      // console.log(deleteTodo)
+      // 'Property does not exist on type 'never' until you added <any[]> to the useState hook
       setTodos(todos.filter(todo => todo.todo_id !== id))
     } catch (err) {
-      console.error(err.message)
+      console.error(err)
     }
   }
 
@@ -26,7 +26,7 @@ const ListTodos = () => {
       //console.log(jsonData)
       setTodos(jsonData)
     } catch (err) {
-      console.error(err.message)
+      console.error(err)
     }
   }
 
