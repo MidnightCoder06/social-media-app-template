@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
 
+interface IForm {
+    firstName: string, 
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+    password: string
+}
+
 const initialFormState = {
     firstName: '',
     lastName: '',
@@ -26,7 +34,7 @@ const SignUpPage = (props) => {
 
     const { setToken } = props;
 
-    const [signedUpEntity, setSignedUpEntity] = useState(initialFormState);
+    const [signedUpEntity, setSignedUpEntity] = useState<IForm>(initialFormState);
     const navigate = useNavigate(); 
 
     const handleChange = (e) => {

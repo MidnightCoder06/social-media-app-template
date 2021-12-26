@@ -1,6 +1,6 @@
 Roadmap
 
-1. codebase cleanup -> search 'TODO' & add typescript interfaces to useState of sigin & signup
+1. codebase cleanup -> search 'TODO'
 
 2. Set up Microsoft Azure for postgres & host the app on azure
 

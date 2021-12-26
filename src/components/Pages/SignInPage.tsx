@@ -6,6 +6,11 @@ show error text (make this a reusable component where you just pass in text as a
         ^ternary showing / hiding based on useState -> setUserExistence
 */
 
+interface IUser {
+    email: string,
+    password: string
+}
+
 const SignInPage = () => {
 
     const initialFormState = {
@@ -13,8 +18,8 @@ const SignInPage = () => {
         password: ''
     }
 
-    const [newEntity, setNewEntity] = useState(initialFormState);
-    const [userExists, setUserExists] = useState(true);
+    const [newEntity, setNewEntity] = useState<IUser>(initialFormState);
+    const [userExists, setUserExists] = useState<boolean>(true);
     const navigate = useNavigate();
 
     /*

@@ -21,7 +21,7 @@ const InputTodo = () => {
 
       
       // refresh so we can see the changes being done
-      //window.location = '/';
+      window.location.href = '/posts';
 
     } catch(err) {
       console.error(err)
