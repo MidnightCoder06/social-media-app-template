@@ -8,6 +8,64 @@ Roadmap
 4. add tests (jest, mocha & chai) (not react testing library)
 
 
+```
+// store the token in memory via the useState hook
+
+App.tsx
+
+function App() {
+
+  const [token, setToken] = useState<string>('');
+
+  if(!token) {
+    // notice if you try to visit another route you wont be able to.
+    return <SignUpPage setToken={setToken} />
+  }
+
+  return (
+      <div className="container">
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+
+
+server.js
+
+app.post('/users', async (req, res) => {
+  try {
+    const { firstName, lastName, email, phoneNumber, password } = req.body
+    const newUser = await pool.query('INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES($1, $2, $3, $4, $5)', [firstName, lastName, email, phoneNumber, password]);
+    res.send({
+      token: 'test123'
+    });
+  } catch(err) {
+    console.error(err.message)
+  }
+})
+
+
+
+signup.tsx
+
+async function loginUser(credentials) {
+    return fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(data => data.json())
+   }
+
+
+const handleSubmit = async e => {
+        e.preventDefault();
+        const token = await loginUser(signedUpEntity)
+        setToken(token)
+        console.log('token', token) // token {token: 'test123'}
+    }
+
+```
 
 You now have a working local API and an application that requests a token using a username and password. But there is still a problem. The token is currently stored using a local state, which means that it is stored in JavaScript memory. If you open a new window, tab, or even just refresh the page, you will lose the token and the user will need to login again. This will be addressed in the next step.
 
@@ -23,3 +81,4 @@ Unlike sessionStorage, localStorage will save data even after the session ends. 
 
 
 Session storage is implemented in this app.
+^inspect -> Application -> Session Storage
