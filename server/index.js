@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-const cors = require('cors'); // https://www.npmjs.com/package/cors
+const cors = require('cors'); // https://www.npmjs.com/package/cors -> This library will enable cross origin resource sharing for all routes.
 // const pool = require('../database/db'); // module.exports = pool
 const { pool } = require('../database/db'); // module.exports = { pool }
 
 // middleware
-app.use(cors());
+app.use(cors()); 
 app.use(express.json()); // gives us access to req.body
 
 // Routes
@@ -95,18 +95,30 @@ app.delete('/todos/:id', async (req, res) => {
 })
 
 
+
+/*
+The first argument is the path the application will listen to 
+and the second argument is a callback function that will run when the application serves the path. 
+The callback takes a req argument, 
+which contains the request data and a res argument that handles the result.
+*/
+
+
+// TODO: change to '/signup'
 // create a user 
 app.post('/users', async (req, res) => {
   try {
     const { firstName, lastName, email, phoneNumber, password } = req.body
     const newUser = await pool.query('INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES($1, $2, $3, $4, $5)', [firstName, lastName, email, phoneNumber, password]);
-    res.json('created a user!');
+    res.send({
+      token: 'test123'
+    });
   } catch(err) {
     console.error(err.message)
   }
 })
 
-// login -> create a user session 
+// post -> create a user session 
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body

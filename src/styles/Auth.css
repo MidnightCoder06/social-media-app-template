@@ -7,7 +7,7 @@
     margin-top: 25px;
 }
 
-/* see if this centers the sign in and sign up page */
+/* TODO: see if this centers the sign in and sign up page */
 .login-wrapper {
     display: flex;
     flex-direction: column;
