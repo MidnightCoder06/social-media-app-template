@@ -58,28 +58,30 @@ const SignInPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1> Sign In </h1>
-            <h3> New? <Link to="/posts"> Create an account </Link> </h3>
-            <h3> Email </h3>
-            <input 
-                name="email"
-                type="text"
-                placeholder="email" 
-                value={newEntity.email}
-                onChange={handleChange}
-            />
-            <h3> Password </h3>
-            <input 
-                name="password"
-                type="text"
-                placeholder="password" 
-                value={newEntity.password}
-                onChange={handleChange}
-            />
-            <h5> Forgot password? </h5>
-            <button> Sign In </button> 
-        </form>
+        <div className="form-wrapper">
+            <form onSubmit={handleSubmit}>
+                <h1> Sign In </h1>
+                <h3> New? <Link to="/posts"> Create an account </Link> </h3>
+                <h3> Email </h3>
+                <input 
+                    name="email"
+                    type="text"
+                    placeholder="email" 
+                    value={newEntity.email}
+                    onChange={handleChange}
+                />
+                <h3> Password </h3>
+                <input 
+                    name="password"
+                    type="text"
+                    placeholder="password" 
+                    value={newEntity.password}
+                    onChange={handleChange}
+                />
+                <h5> Forgot password? </h5>
+                <button> Sign In </button> 
+            </form>
+        </div>
     );
 }
 

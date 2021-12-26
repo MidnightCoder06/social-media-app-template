@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useToken from './utils/useToken';
 import Home from './components/Home';
@@ -6,7 +5,6 @@ import SignInPage from './components/Pages/SignInPage';
 import SignUpPage from './components/Pages/SignUpPage';
 import PostContainer from './components/Posts/PostContainer';
 import './App.css';
-
 
 
 function App() {

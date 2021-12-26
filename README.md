@@ -1,12 +1,8 @@
 Roadmap
-1. json web token & localstorage 
-       
+
+1. codebase cleanup -> search 'TODO' & add typescript interfaces to useState of sigin & signup
+
 2. Set up Microsoft Azure for postgres & host the app on azure
-
-3. codebase cleanup & add more typescript
-
-4. add tests (jest, mocha & chai) (not react testing library)
-
 
 ```
 // store the token in memory via the useState hook

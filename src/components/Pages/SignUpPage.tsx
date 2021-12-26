@@ -79,51 +79,53 @@ const SignUpPage = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h3> First Name* </h3>
-            <input 
-                name="firstName"
-                type="text"
-                placeholder="first name" 
-                onChange={handleChange}
-                value={signedUpEntity.firstName}
-            />
-            <h3> Last Name* </h3>
-            <input 
-                name="lastName"
-                type="text"
-                placeholder="last name" 
-                onChange={handleChange}
-                value={signedUpEntity.lastName}
-            />
-            <h3> Email* </h3>
-            <input 
-                name="email"
-                type="text"
-                placeholder="email" 
-                onChange={handleChange}
-                value={signedUpEntity.email}
-            />
-            <h3> Phone Number* </h3>
-            <input 
-                name="phoneNumber"
-                type="text"
-                placeholder="000-000-0000" 
-                onChange={handleChange}
-                value={signedUpEntity.phoneNumber}
-            />
-            <h3> Password* </h3>
-            <input 
-                name="password"
-                type="text"
-                placeholder="password" 
-                onChange={handleChange}
-                value={signedUpEntity.password}
-            />
-            <div className="create-account">
-                <button> Create Account </button>
-            </div>
-        </form>
+        <div className="form-wrapper">
+            <form onSubmit={handleSubmit}>
+                <h3> First Name* </h3>
+                <input 
+                    name="firstName"
+                    type="text"
+                    placeholder="first name" 
+                    onChange={handleChange}
+                    value={signedUpEntity.firstName}
+                />
+                <h3> Last Name* </h3>
+                <input 
+                    name="lastName"
+                    type="text"
+                    placeholder="last name" 
+                    onChange={handleChange}
+                    value={signedUpEntity.lastName}
+                />
+                <h3> Email* </h3>
+                <input 
+                    name="email"
+                    type="text"
+                    placeholder="email" 
+                    onChange={handleChange}
+                    value={signedUpEntity.email}
+                />
+                <h3> Phone Number* </h3>
+                <input 
+                    name="phoneNumber"
+                    type="text"
+                    placeholder="000-000-0000" 
+                    onChange={handleChange}
+                    value={signedUpEntity.phoneNumber}
+                />
+                <h3> Password* </h3>
+                <input 
+                    name="password"
+                    type="text"
+                    placeholder="password" 
+                    onChange={handleChange}
+                    value={signedUpEntity.password}
+                />
+                <div className="create-account">
+                    <button> Create Account </button>
+                </div>
+            </form>
+        </div>
     );
 }
 

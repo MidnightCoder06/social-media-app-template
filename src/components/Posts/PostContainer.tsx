@@ -1,4 +1,3 @@
-import React from 'react';
 import InputTodo from './InputTodo';
 import ListTodos from './ListTodos';
 
