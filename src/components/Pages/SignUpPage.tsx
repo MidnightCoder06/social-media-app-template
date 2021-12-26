@@ -10,7 +10,9 @@ const initialFormState = {
     password: ''
 }
 
-const SignUpPage = () => {
+const SignUpPage = (props) => {
+
+    const { setToken } = props;
 
     const [signedUpEntity, setSignedUpEntity] = useState(initialFormState);
     const navigate = useNavigate(); 
