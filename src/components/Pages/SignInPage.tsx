@@ -26,7 +26,7 @@ const SignInPage = () => {
     }
 
     const [newEntity, setNewEntity] = useState<IUser>(initialFormState);
-    const [userExists, setUserExists] = useState<boolean>(true);
+    const [errorExists, setErrorsExists] = useState<boolean>(false);
     const navigate = useNavigate();
 
     /*
@@ -42,7 +42,7 @@ const SignInPage = () => {
         try {
             const user = await signinUser(newEntity)
             if (user === 'this is not a registered entity') {
-                console.log('display error text') // show error text (make this a reusable component where you just pass in text as a prop) -> ternary showing / hiding based on useState -> setUserExistence
+                setErrorsExists(true)
             } else {
                 navigate('/posts')
             }
@@ -87,6 +87,7 @@ const SignInPage = () => {
                 <h5> Forgot password? </h5>
                 <button> Sign In </button> 
             </form>
+            { errorExists ? <ErrorText errorText={'the email or password you have entered is incorrect'} /> : ''}
         </div>
     );
 }
