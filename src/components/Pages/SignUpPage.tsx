@@ -18,7 +18,6 @@ const initialFormState = {
     password: ''
 }
 
-// TODO: make this generic in a utils folder so you can import into both the signup & signin function 
 async function loginUser(credentials) {
     return fetch('http://localhost:5000/users', {
       method: 'POST',
@@ -68,22 +67,14 @@ const SignUpPage = (props) => {
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('from frontend', signedUpEntity);
-        
-        // try {
-        //     const response = await fetch('http://localhost:5000/users', {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': "application/json" },
-        //         body: JSON.stringify(signedUpEntity)
-        //     });
-        //     console.log('response from signup submit', response.body)
-        //     navigate('/posts')
-        // } catch(err) {
-        //     console.error(err)
-        // }
-
-        const token = await loginUser(signedUpEntity)
-        setToken(token)
-        console.log('token', token) // token {token: 'test123'}
+        try {
+            const token = await loginUser(signedUpEntity)
+            setToken(token)
+            console.log('token', token) // token {token: 'test123'}
+            navigate('/posts')
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     return (

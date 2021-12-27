@@ -1,8 +1,6 @@
 Roadmap
 
-1. codebase cleanup -> search 'TODO'
-
-2. Set up Microsoft Azure for postgres & host the app on azure
+3. Set up Microsoft Azure for postgres & host the app on azure
 
 ```
 // store the token in memory via the useState hook

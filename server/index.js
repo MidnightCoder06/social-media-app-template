@@ -104,7 +104,6 @@ which contains the request data and a res argument that handles the result.
 */
 
 
-// TODO: change to '/signup'
 // create a user 
 app.post('/users', async (req, res) => {
   try {
@@ -126,17 +125,14 @@ app.post('/login', async (req, res) => {
     // if user exists -> rows: [ { email: 'mySecondLove', password: 'soulCoordinates' } ],
     // if user doesn't exists -> rows: []
     if (existingUser.rows[0]) {
-      res.json(existingUser.rows[0])
+      res.send(existingUser.rows[0])
+    } else {
+      res.status(404).json('this is not a registered entity');
     }
   } catch(err) {
     console.error(err.message)
   }
 })
-
-
-
-
-
 
 app.listen(5000, () => {
   console.log('server has started on port 5000');

@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-/* TODO:
-show error text (make this a reusable component where you just pass in text as a prop)
-        ^ternary showing / hiding based on useState -> setUserExistence
-*/
+import ErrorText from '../ErrorText';
 
 interface IUser {
     email: string,
     password: string
 }
+
+async function signinUser(credentials) {
+    return fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(data => data.json())
+   }
 
 const SignInPage = () => {
 
@@ -33,21 +40,15 @@ const SignInPage = () => {
         e.preventDefault();
         console.log('submit');
         try {
-            // TODO: create a base url variable
-            const response = await fetch('http://localhost:5000/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify(newEntity)
-            })
-            console.log('response', response)
-            if (response) {
-                navigate('/posts')
+            const user = await signinUser(newEntity)
+            if (user === 'this is not a registered entity') {
+                console.log('display error text') // show error text (make this a reusable component where you just pass in text as a prop) -> ternary showing / hiding based on useState -> setUserExistence
             } else {
-                console.log('display error text')
+                navigate('/posts')
             }
         } catch(err) {
             console.error(err)
-        }
+        } 
     }
 
     const handleChange = e => {
