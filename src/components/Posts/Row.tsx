@@ -18,19 +18,17 @@ const Row = (props) => {
       }
 
     return (
-        <tr key={todo.todo_id}>
-            <td>{todo.description}</td>
-            <td><EditTodo todo={todo} /></td>
-            <td>
+        <div className='todo-row' key={todo.todo_id}>
+            <div>{todo.description}</div>
+            <div><EditTodo todo={todo} /></div>
+            <div>
                 <button
                 onClick={() => deleteTodo(todo.todo_id)}>
                 Delete
                 </button>
-            </td>
-        </tr>
+            </div>
+        </div>
     );
 }
 
 export default Row;
-
-// <div className='todo-row'> Bob </div>
