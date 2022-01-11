@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../styles/InputTodo.css';
 
 const InputTodo = () => {
 
@@ -29,8 +30,8 @@ const InputTodo = () => {
   }
 
   return (
-    <>
-      <h1 className="text-center mt-5">Pern Todo List</h1>
+    <div className='input-todo-wrapper'>
+      <h1> Pern Stack Todo List App </h1>
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
@@ -40,7 +41,7 @@ const InputTodo = () => {
         />
         <button className="btn btn-success">Add</button>
       </form>
-    </>
+    </div>
   );
 };
 
