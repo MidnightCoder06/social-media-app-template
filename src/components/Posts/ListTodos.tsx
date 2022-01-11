@@ -40,7 +40,7 @@ const ListTodos = () => {
         <thead>
           <tr>
             <th>Title</th>
-            <th>Edit</th>
+            <th>Type to Edit</th>
             <th>Delete</th>
           </tr>
         </thead>

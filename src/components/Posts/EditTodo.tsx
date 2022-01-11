@@ -27,9 +27,6 @@ const EditTodo = ({todo}) => {
       <div id={`id${todo.todo_id}`} className="modal fade" role="dialog">
       <div className="modal-dialog">
         <div className="modal-content">
-          <div className="modal-header">
-            <h4>Edit Todo</h4>
-          </div>
           <div className="modal-body">
             <input
               type="text"
