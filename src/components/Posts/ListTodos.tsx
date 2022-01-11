@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EditTodo from './EditTodo';
+import Header from './Header';
+import '../../styles/ListTodo.css';
 
 const ListTodos = () => {
 
@@ -36,13 +38,9 @@ const ListTodos = () => {
 
   return (
     <>
-      <table className="table mt-5 text-center">
+      <table>
         <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type to Edit</th>
-            <th>Delete</th>
-          </tr>
+          <Header />
         </thead>
         <tbody>
           {todos.map(todo => (
