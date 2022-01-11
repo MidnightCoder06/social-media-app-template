@@ -22,10 +22,6 @@ const EditTodo = ({todo}) => {
     }
   }
 
-  const test = () => {
-    console.log('is this button useless')
-  }
-
   return (
     <>
       <div id={`id${todo.todo_id}`} className="modal fade" role="dialog">
