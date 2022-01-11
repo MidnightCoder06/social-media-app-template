@@ -46,7 +46,6 @@ const EditTodo = ({todo}) => {
               >
                 Submit Edit
             </button>
-            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
 
