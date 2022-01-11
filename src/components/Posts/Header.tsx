@@ -4,9 +4,7 @@ const Header = () => {
     return (
         <>
             <tr>
-                <th>Title</th>
-                <th>Type to Edit</th>
-                <th>Delete</th>
+                <th>Each task title is editable</th>
             </tr>
         </>
     );
