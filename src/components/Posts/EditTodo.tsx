@@ -23,32 +23,25 @@ const EditTodo = ({todo}) => {
   }
 
   return (
-    <>
-      <div id={`id${todo.todo_id}`} className="modal fade" role="dialog">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-body">
-            <input
-              type="text"
-              className="form-control"
-              value={description}
-              onChange={e => setDesciption(e.target.value)} />
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-warning"
-              data-dismiss="modal"
-              onClick = {e => updateDescription(e)}
-              >
-                Submit Edit
-            </button>
-          </div>
+      <div>
+        <div>
+          <input
+            type="text"
+            className="form-control"
+            value={description}
+            onChange={e => setDesciption(e.target.value)} />
         </div>
-
+        <div>
+          <button
+            type="button"
+            className="btn btn-warning"
+            data-dismiss="modal"
+            onClick = {e => updateDescription(e)}
+            >
+              Submit Edit
+          </button>
+        </div>
       </div>
-      </div>
-    </>
   );
 }
 
