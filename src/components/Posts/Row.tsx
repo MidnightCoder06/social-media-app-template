@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import EditTodo from './EditTodo';
 import Checkbox from '../RowElements/Checkbox';
 import DropdownButton from '../RowElements/DropdownButton';
+import Subtasks from '../SubPosts/Subtasks';
 import '../../styles/Row.css';
 
 const Row = (props) => {
     const { todo, todos, setTodos} = props;
+
+    const [subtasks, setSubtasks] = useState([]);
 
     const deleteTodo = async (id) => {
         try {
@@ -38,8 +41,10 @@ const Row = (props) => {
             </div>
             
             <div className='child'>
-                <DropdownButton />
+                <DropdownButton setSubtasks={setSubtasks} />
             </div>
+
+            <Subtasks subtasks={subtasks} />
             
         </div>
     );

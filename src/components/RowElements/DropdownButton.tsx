@@ -1,6 +1,8 @@
 import React from 'react'
 
-const DropdownButton = () => {
+const DropdownButton = (props) => {
+
+    const { setSubtasks } = props;
 
     const fetchSubTasks = () => {
         console.log('fetching sub tasks')
