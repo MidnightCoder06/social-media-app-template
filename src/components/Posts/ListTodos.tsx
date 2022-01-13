@@ -28,7 +28,7 @@ const ListTodos = () => {
       </div>
       <div className='tbody'>
         {todos.map(todo => (
-          <Row todo={todo} todos={todos} setTodos={setTodos} />
+          <Row key={todo.todo_id} todo={todo} todos={todos} setTodos={setTodos} />
         ))}
       </div>
     </>

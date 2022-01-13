@@ -20,7 +20,7 @@ const Row = (props) => {
       }
 
     return (
-        <div className='todo-row' key={todo.todo_id}>
+        <div className='todo-row'>
             <Checkbox /> 
             <div>{todo.description}</div>
             <div><EditTodo todo={todo} /></div>
