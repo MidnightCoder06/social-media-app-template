@@ -3,3 +3,8 @@
     margin-bottom: 50px;
     margin-left: 15px;
 }
+
+.child {
+    display: inline-block;
+    margin-left: 15px;
+}

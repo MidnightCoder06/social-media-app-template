@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EditTodo from './EditTodo';
 import Checkbox from '../RowElements/Checkbox';
 import DropdownButton from '../RowElements/DropdownButton';
-import '../../styles/ListTodo.css';
+import '../../styles/Row.css';
 
 const Row = (props) => {
     const { todo, todos, setTodos} = props;
@@ -21,16 +21,26 @@ const Row = (props) => {
 
     return (
         <div className='todo-row'>
-            <Checkbox /> 
-            <div>{todo.description}</div>
-            <div><EditTodo todo={todo} /></div>
-            <div>
-                <button
-                onClick={() => deleteTodo(todo.todo_id)}>
-                Delete
-                </button>
+
+            <div className='child'>
+                <Checkbox /> 
             </div>
-            <DropdownButton />
+            
+            <div className='child'>
+                <div>{todo.description}</div>
+                <div><EditTodo todo={todo} /></div>
+                <div>
+                    <button
+                    onClick={() => deleteTodo(todo.todo_id)}>
+                    Delete
+                    </button>
+                </div>
+            </div>
+            
+            <div className='child'>
+                <DropdownButton />
+            </div>
+            
         </div>
     );
 }

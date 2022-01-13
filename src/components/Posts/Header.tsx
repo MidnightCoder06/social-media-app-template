@@ -1,8 +1,9 @@
 import React from 'react';
+import '../../styles/Header.css';
 
 const Header = () => {
     return (
-        <div>Each task title is editable</div>
+        <div className='header'> *Each task title is editable </div>
     );
 }
 
