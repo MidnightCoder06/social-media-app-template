@@ -2,11 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <>
-            <tr>
-                <th>Each task title is editable</th>
-            </tr>
-        </>
+        <div>Each task title is editable</div>
     );
 }
 

@@ -22,7 +22,6 @@ const Row = (props) => {
     return (
         <div className='todo-row' key={todo.todo_id}>
             <Checkbox /> 
-
             <div>{todo.description}</div>
             <div><EditTodo todo={todo} /></div>
             <div>
@@ -31,7 +30,6 @@ const Row = (props) => {
                 Delete
                 </button>
             </div>
-
             <DropdownButton />
         </div>
     );

@@ -23,16 +23,14 @@ const ListTodos = () => {
 
   return (
     <>
-      <table>
-        <thead>
-          <Header />
-        </thead>
-        <tbody>
-          {todos.map(todo => (
-            <Row todo={todo} todos={todos} setTodos={setTodos} />
-          ))}
-        </tbody>
-      </table>
+      <div className='thead'>
+        <Header />
+      </div>
+      <div className='tbody'>
+        {todos.map(todo => (
+          <Row todo={todo} todos={todos} setTodos={setTodos} />
+        ))}
+      </div>
     </>
   );
 }
