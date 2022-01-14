@@ -9,7 +9,7 @@ const Subtasks = (props) => {
     return (
         <div className='subtasks-container'>
             {subtasks.map(subtask => (
-                <Subtask key={subtask.id} title={subtask.title} />
+                <Subtask key={subtask.id} subTaskId={subtask.id} title={subtask.title} />
             ))}
         </div>
     );

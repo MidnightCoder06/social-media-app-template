@@ -27,7 +27,7 @@ const Row = (props) => {
         <div className='todo-row'>
 
             <div className='child'>
-                <Checkbox /> 
+                <Checkbox todoId={todo.todo_id} database_lookup_type={'task'} /> 
             </div>
             
             <div className='child'>
