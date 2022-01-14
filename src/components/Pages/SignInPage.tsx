@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ErrorText from '../ErrorText';
 
+// todo: implement some error handling 
+
 interface IUser {
     email: string,
     password: string
