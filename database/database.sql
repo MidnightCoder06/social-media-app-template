@@ -33,3 +33,5 @@ INSERT INTO todo(description) VALUES ('hello');
 CREATE TABLE users(user_id SERIAL PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255), phone_number VARCHAR(255), password VARCHAR(255));
 
 INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES ('jean', 'leconte', 'jleconte36@gmail.com', '262-455-8783', 'blahblah');
+
+-- TODO: create a subtasks table with the appropriate primary key / foreign key relationship 

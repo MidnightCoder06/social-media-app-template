@@ -9,6 +9,7 @@ const Row = (props) => {
     const { todo, todos, setTodos} = props;
 
     const [subtasks, setSubtasks] = useState([]);
+    const [dropdownPressed, setDropdownPressed] = useState(false);
 
     const deleteTodo = async (id) => {
         try {
@@ -41,10 +42,10 @@ const Row = (props) => {
             </div>
             
             <div className='child'>
-                <DropdownButton setSubtasks={setSubtasks} />
+                <DropdownButton setSubtasks={setSubtasks} dropdownPressed={dropdownPressed} setDropdownPressed={setDropdownPressed} />
             </div>
 
-            <Subtasks subtasks={subtasks} />
+            {dropdownPressed ? <Subtasks subtasks={subtasks} /> : ''}
             
         </div>
     );

@@ -1,4 +1,5 @@
 // map over all the subtasks and put them in the subtask component 
+// if no subtasks then display a progress circle 
 
 import React from 'react';
 import '../../styles/Subtasks.css';
