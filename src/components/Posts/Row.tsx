@@ -8,7 +8,7 @@ import '../../styles/Row.css';
 const Row = (props) => {
     const { todo, todos, setTodos} = props;
 
-    const [subtasks, setSubtasks] = useState([]);
+    const [subtasks, setSubtasks] = useState([ {id: 4, title: 'Subtask 1'}, {id: 4, title: 'Subtask 2'}, {id: 4, title: 'Subtask 3'}, {id: 4, title: 'Subtask 4'} ]);
     const [dropdownPressed, setDropdownPressed] = useState(false);
 
     const deleteTodo = async (id) => {

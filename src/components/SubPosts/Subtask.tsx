@@ -1,10 +1,9 @@
 import React from 'react';
 
-// take in an individual subtask as a prop
-
-const Subtask = () => {
+const Subtask = (props) => {
+    const { title } = props;
     return (
-        <div> subtask </div>
+        <div> { title } </div>
     );
 }
 
