@@ -26,7 +26,7 @@ const Row = (props) => {
         <div className='todo-row'>
 
             <div className='child'>
-                <Checkbox todoId={todo.todo_id} database_lookup_type={'task'} /> 
+                <Checkbox todoId={todo.todo_id} isCompleted={todo.isCompleted} database_lookup_type={'task'} /> 
             </div>
             
             <div className='child'>
@@ -44,7 +44,7 @@ const Row = (props) => {
                 <DropdownButton dropdownPressed={dropdownPressed} setDropdownPressed={setDropdownPressed} />
             </div>
 
-            {dropdownPressed ? <Subtasks /> : ''}
+            {dropdownPressed ? <Subtasks parentTaskId={todo.todo_id} /> : ''}
             
         </div>
     );

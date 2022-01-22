@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ErrorText from '../ErrorText';
 
-// todo: implement some error handling 
-
 interface IUser {
     email: string,
     password: string
@@ -41,16 +39,20 @@ const SignInPage = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         console.log('submit');
-        try {
-            const user = await signinUser(newEntity)
-            if (user === 'this is not a registered entity') {
-                setErrorsExists(true)
-            } else {
-                navigate('/posts')
-            }
-        } catch(err) {
-            console.error(err)
-        } 
+        if (newEntity.password.length < 8 || !newEntity.email.includes('@')) {
+            setErrorsExists(true)
+        } else {
+            try {
+                const user = await signinUser(newEntity)
+                if (user === 'this is not a registered entity') {
+                    setErrorsExists(true)
+                } else {
+                    navigate('/posts')
+                }
+            } catch(err) {
+                console.error(err)
+            } 
+        }
     }
 
     const handleChange = e => {
@@ -89,7 +91,7 @@ const SignInPage = () => {
                 <h5> Forgot password? </h5>
                 <button> Sign In </button> 
             </form>
-            { errorExists ? <ErrorText errorText={'the email or password you have entered is incorrect'} /> : ''}
+            { errorExists ? <ErrorText errorText={'the email or password you have entered is either incorrect or not properly formated'} /> : ''}
         </div>
     );
 }

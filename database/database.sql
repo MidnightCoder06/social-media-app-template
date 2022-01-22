@@ -36,3 +36,4 @@ INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES (
 
 -- TODO: create a subtasks table with the appropriate primary key / foreign key relationship 
 -- TODO: delete the todo table and replace with a tasks table 
+-- TODO: look up how to seed the database (subtasks)

@@ -5,7 +5,6 @@ const EditTodo = ({todo}) => {
   const [description, setDesciption] = useState(todo.description);
 
   const updateDescription = async e => {
-    console.log('yoooo')
     e.preventDefault();
     try {
       const body = { description };

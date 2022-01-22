@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/Auth.css';
+import ErrorText from '../ErrorText';
 
 interface IForm {
     firstName: string, 
@@ -34,9 +35,11 @@ const SignUpPage = (props) => {
     const { setToken } = props;
 
     const [signedUpEntity, setSignedUpEntity] = useState<IForm>(initialFormState);
+    const [errorExists, setErrorsExists] = useState<boolean>(false);
     const navigate = useNavigate(); 
 
     const handleChange = (e) => {
+        console.log("handleChange")
         if (e.target.name == 'firstName') {
             let currState = {...signedUpEntity}
             currState.firstName = e.target.value
@@ -50,6 +53,7 @@ const SignUpPage = (props) => {
         else if (e.target.name == 'email') {
             let currState = {...signedUpEntity}
             currState.email = e.target.value
+            console.log("currState - email", currState.email)
             setSignedUpEntity(currState)
         }
         else if (e.target.name == 'phoneNumber') {
@@ -60,20 +64,25 @@ const SignUpPage = (props) => {
         else if (e.target.name == 'password') {
             let currState = {...signedUpEntity}
             currState.password = e.target.value
+            console.log("currState - password", currState.password)
             setSignedUpEntity(currState)
         }
     }
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('from frontend', signedUpEntity);
-        try {
-            const token = await loginUser(signedUpEntity)
-            setToken(token)
-            console.log('token', token) // token {token: 'test123'}
-            navigate('/posts')
-        } catch(err) {
-            console.error(err)
+        // console.log('from frontend', signedUpEntity);
+        if(signedUpEntity.password.length < 8 || !signedUpEntity.email.includes('@')) {
+            setErrorsExists(true)
+        } else {
+            try {
+                const token = await loginUser(signedUpEntity)
+                setToken(token)
+                console.log('token', token) // token {token: 'test123'}
+                navigate('/posts')
+            } catch(err) {
+                console.error(err)
+            }
         }
     }
 
@@ -124,6 +133,7 @@ const SignUpPage = (props) => {
                     <button> Create Account </button>
                 </div>
             </form>
+            { errorExists ? <ErrorText errorText={'the email or password you have entered is either incorrect or not properly formated'} /> : ''}
         </div>
     );
 }
