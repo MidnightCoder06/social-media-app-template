@@ -134,7 +134,23 @@ app.post('/login', async (req, res) => {
   }
 })
 
+
+//////// Tasks
+
+// TODO: modify from the existing todo methods
+
 //////// Subtasks
+
+// get all todos
+app.get('/subtasks', async (req, res) => {
+  try {
+    const allSubtasks = await pool.query('SELECT * FROM subtasks');
+
+    res.json(allSubtasks.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 // get all subtasks for a given task 
 app.get('/subtasks/:id', async (req, res) => {
@@ -161,20 +177,6 @@ app.put('/checkbox', async (req, res) => {
     }
     // res.json('is completed status updated updated!'); -> is a res.json required?
   } catch (err) {
-    console.error(err.message);
-  }
-})
-
-
-// create a subtaks for a given task -> TODO: seed this
-  // have the database auto-increment a count instead of generating a uuid on the frontend
-app.post('subtask', async (req, res) => {
-  try {
-    const { taskId, title } = req.body
-    const newSubTask = await pool.query('INSERT INTO subtasks (parentId, title) VALUES($1, $2) RETURNING *', [taskId, title]);
-    // you returned all the rows and assigned it a variable
-    res.json(newSubTask.rows[0]) // just peek the first / top row ... the one you just created
-  } catch(err) {
     console.error(err.message);
   }
 })
