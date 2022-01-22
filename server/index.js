@@ -134,11 +134,6 @@ app.post('/login', async (req, res) => {
   }
 })
 
-
-//////// Tasks
-
-// TODO: modify from the existing todo methods
-
 //////// Subtasks
 
 // get all todos
@@ -156,7 +151,7 @@ app.get('/subtasks', async (req, res) => {
 app.get('/subtasks/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const allSubTasks = await pool.query('SELECT * FROM subtasks'); // this needs to be a join with the tasks table
+    const allSubTasks = await pool.query('SELECT * FROM subtasks WHERE task_id = $1', [id]);
     
     res.json(allSubTasks.rows);
   } catch (err) {
@@ -167,15 +162,15 @@ app.get('/subtasks/:id', async (req, res) => {
 // update the isCompleted boolean value of the task or subtask in whichever of those two databases
 app.put('/checkbox', async (req, res) => {
   try {
-    const { id, isCompleted, type} = req.body;
+    const { id, isChecked, type } = req.body; // note that these variable names must match the frontend
     if (type === 'task') {
-      const updateCheckbox = await pool.query('UPDATE task SET isCompleted = $1 WHERE task_id = $2', [isCompleted, id]);
+      await pool.query('UPDATE tasks SET isCompleted = $1 WHERE task_id = $2', [isChecked, id]);
     } else if (type == 'subtask') {
-      const updateCheckbox = await pool.query('UPDATE subtask SET isCompleted = $1 WHERE subtask_id = $2', [isCompleted, id]);
+      await pool.query('UPDATE subtasks SET is_completed = $1 WHERE subtask_id = $2', [isChecked, id]);
     } else {
-      // return the appropriate error code 
+      res.status(503).send({status: 1, message: "Messages not available!"}); 
     }
-    // res.json('is completed status updated updated!'); -> is a res.json required?
+    res.json('is completed status updated updated!');
   } catch (err) {
     console.error(err.message);
   }

@@ -7,7 +7,8 @@ import '../../styles/Subtasks.css';
 const Subtasks = (props) => {
     const { parentTaskId } = props;
 
-    //const [subtasks, setSubtasks] = useState([ {parentId: 4, subTaskId:45, title: 'Subtask 1', isCompleted: true}, {parentId: 1, subTaskId:5, title: 'Subtask 2', isCompleted: false} ]);
+    const mockParentId = '1';
+
     const [subtasks, setSubtasks] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(false);
@@ -16,8 +17,10 @@ const Subtasks = (props) => {
         try {
             setIsLoading(true);
             setErrors(false);
-            // TODO: in comments test out making sure you get a subtak for a given parent id
+            // all subtasks
             const response = await fetch('http://localhost:5000/subtasks');
+            // specific subtak
+            //const response = await fetch(`http://localhost:5000/subtasks/${mockParentId}`);
             const jsonData = await response.json();
             console.log('sub tasks from the backend', jsonData)
             setSubtasks(jsonData);

@@ -8,6 +8,9 @@ import '../../styles/Row.css';
 const Row = (props) => {
     const { todo, todos, setTodos} = props;
 
+    // todo.isCompleted is not implemented so just mocking the value
+    const todoCompletionStatus = true;
+
     const [dropdownPressed, setDropdownPressed] = useState(false);
 
     const deleteTodo = async (id) => {
@@ -26,7 +29,7 @@ const Row = (props) => {
         <div className='todo-row'>
 
             <div className='child'>
-                <Checkbox todoId={todo.todo_id} isCompleted={todo.isCompleted} database_lookup_type={'task'} /> 
+                <Checkbox todoId={todo.todo_id} isCompleted={todoCompletionStatus} database_lookup_type={'task'} /> 
             </div>
             
             <div className='child'>

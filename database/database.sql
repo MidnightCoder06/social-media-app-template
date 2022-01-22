@@ -33,8 +33,6 @@ CREATE TABLE users(user_id SERIAL PRIMARY KEY, first_name VARCHAR(255), last_nam
 
 INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES ('jean', 'leconte', 'jleconte36@gmail.com', '262-455-8783', 'blahblah');
 
-
--- TODO: delete the todo table and replace with a tasks table 
 -- DROP TABLE "todo";
 
 CREATE TABLE tasks(task_id VARCHAR(255), title VARCHAR(255), is_completed boolean, PRIMARY KEY(task_id));
