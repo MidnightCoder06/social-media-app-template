@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Row from './Row';
-
-// TODO: add infinite scroll to a certain point + paganation like a tabbed wizard
+import Pagination from '../Pagination';
+import '../../styles/ListTodos.css';
 
 const ListTodos = () => {
 
   const [todos, setTodos] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const getTodos = async () => {
     try {
@@ -46,10 +46,16 @@ const ListTodos = () => {
                 <Row key={todo.todo_id} todo={todo} todos={todos} setTodos={setTodos} />
               ))}
             </div>
+            {
+              todos.length > 0 ? (
+                <Pagination data={todos} />
+              ) : (
+                <div className='defaultText'> no tasks to display </div>
+              )
+            }
           </>
         )
     }
-      
     </>
   );
 }

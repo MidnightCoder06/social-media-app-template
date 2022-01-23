@@ -1,5 +1,3 @@
-// TODO: if no subtasks then display a progress circle 
-
 import React, { useState, useEffect } from 'react';
 import Subtask from './Subtask';
 import '../../styles/Subtasks.css';
@@ -22,7 +20,6 @@ const Subtasks = (props) => {
             // specific subtak
             //const response = await fetch(`http://localhost:5000/subtasks/${mockParentId}`);
             const jsonData = await response.json();
-            console.log('sub tasks from the backend', jsonData)
             setSubtasks(jsonData);
         } catch(err) {
             console.error(err);

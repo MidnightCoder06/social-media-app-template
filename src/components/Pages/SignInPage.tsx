@@ -38,7 +38,6 @@ const SignInPage = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        console.log('submit');
         if (newEntity.password.length < 8 || !newEntity.email.includes('@')) {
             setErrorsExists(true)
         } else {

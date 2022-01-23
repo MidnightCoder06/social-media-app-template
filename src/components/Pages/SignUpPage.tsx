@@ -39,7 +39,6 @@ const SignUpPage = (props) => {
     const navigate = useNavigate(); 
 
     const handleChange = (e) => {
-        console.log("handleChange")
         if (e.target.name == 'firstName') {
             let currState = {...signedUpEntity}
             currState.firstName = e.target.value
@@ -53,7 +52,6 @@ const SignUpPage = (props) => {
         else if (e.target.name == 'email') {
             let currState = {...signedUpEntity}
             currState.email = e.target.value
-            console.log("currState - email", currState.email)
             setSignedUpEntity(currState)
         }
         else if (e.target.name == 'phoneNumber') {
@@ -64,14 +62,12 @@ const SignUpPage = (props) => {
         else if (e.target.name == 'password') {
             let currState = {...signedUpEntity}
             currState.password = e.target.value
-            console.log("currState - password", currState.password)
             setSignedUpEntity(currState)
         }
     }
 
     const handleSubmit = async e => {
         e.preventDefault();
-        // console.log('from frontend', signedUpEntity);
         if(signedUpEntity.password.length < 8 || !signedUpEntity.email.includes('@')) {
             setErrorsExists(true)
         } else {
