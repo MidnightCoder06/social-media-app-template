@@ -18,6 +18,7 @@ async function signinUser(credentials) {
       .then(data => data.json())
    }
 
+// TODO: to use the new error text api 
 const SignInPage = () => {
 
     const initialFormState = {

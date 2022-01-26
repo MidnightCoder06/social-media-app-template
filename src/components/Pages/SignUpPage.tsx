@@ -37,7 +37,7 @@ const SignUpPage = (props) => {
     const { setToken } = props;
 
     const [signedUpEntity, setSignedUpEntity] = useState<IForm>(initialFormState);
-    const [errorExists, setErrorsExists] = useState<boolean>(false);
+    const [error, setError] = useState<string>('');
     const navigate = useNavigate(); 
 
     const handleChange = (e) => {
@@ -70,14 +70,20 @@ const SignUpPage = (props) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if(signedUpEntity.password.length < 8 || !signedUpEntity.email.includes('@')) {
-            setErrorsExists(true)
+        if(signedUpEntity.password.length < 8) {
+            setError('your password must be at least 8 characters')
+        } else if(!signedUpEntity.email.includes('@')) {
+            setError('please enter a valid email address')
         } else {
             try {
-                const token = await loginUser(signedUpEntity)
-                setToken(token)
-                console.log('token', token) // token {token: 'test123'}
-                navigate('/posts')
+                const response = await loginUser(signedUpEntity)
+                console.log('response', response) // token     {token: 'test123'} or {message: 'duplicate email'}
+                if (response.token) {
+                    setToken(response)
+                    navigate('/posts')
+                } else if (response.message) {
+                    setError('an account with this email is already registered. If you own this account please login. Other use a different email address.')
+                }
             } catch(err) {
                 console.error(err)
             }
@@ -131,7 +137,7 @@ const SignUpPage = (props) => {
                     <button> Create Account </button>
                 </div>
             </form>
-            { errorExists ? <ErrorText errorText={'the email or password you have entered is either incorrect or not properly formated'} /> : ''}
+            { error ? <ErrorText errorText={error} /> : ''}
         </div>
     );
 }
