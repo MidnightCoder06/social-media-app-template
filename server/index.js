@@ -1,8 +1,20 @@
 const express = require('express');
 const app = express();
 const cors = require('cors'); // https://www.npmjs.com/package/cors -> This library will enable cross origin resource sharing for all routes.
+const bcrypt = require('bcrypt');
+/*
+1. create a salt 
+  * needed because if you only have one hashing function 
+    and then someone who has the same password will have the same hased password
+    so if someone cracks one password they have access to all the other passwords that looks exactly the same
+2. salt + passowrd 
+    salt (unique to each user) is added to the password before hashing it so that every hashed password is unique
+      *i.e. the exact same user passwords will look completely different 
+*/
+
 // const pool = require('../database/db'); // module.exports = pool
 const { pool } = require('../database/db'); // module.exports = { pool }
+const { DuplicateError } = require('jest-haste-map');
 
 // middleware
 app.use(cors()); 
@@ -21,6 +33,9 @@ app.use(express.json()); // gives us access to req.body
     that is the parameter converted to a JSON string using the JSON.stringify() method.
   It returns the response to the client.
   */
+
+
+// using sql prepared statements to help avoid sql injection 
 
 // create a todo
 app.post('/todos', async (req, res) => {
@@ -87,8 +102,7 @@ app.delete('/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const deleteTodo = await pool.query('DELETE FROM todo WHERE todo_id = $1', [id]);
-
-    res.json('todo was deleted!');
+    res.status(200).send()
   } catch (err) {
     console.error(err.message)
   }
@@ -107,17 +121,52 @@ which contains the request data and a res argument that handles the result.
 // create a user 
 app.post('/users', async (req, res) => {
   try {
+    // destructuring request body 
     const { firstName, lastName, email, phoneNumber, password } = req.body
-    const newUser = await pool.query('INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES($1, $2, $3, $4, $5)', [firstName, lastName, email, phoneNumber, password]);
-    res.send({
-      token: 'test123'
-    });
+    // encryption
+    const salt = await bcrypt.genSalt()
+    const hashedPassword = await bcrypt.hash(password, salt)
+    // ensure email is unique
+    const allEmailsObject = await pool.query('SELECT email FROM users');
+    const rowsArray = allEmailsObject.rows
+    //console.log(rowsArray)
+    const duplicateEmail = rowsArray.find(existingemail => existingemail.email === email);
+    //console.log(duplicateEmail)
+    // do not create user -> handle error in the frontend
+    if (duplicateEmail) {
+      console.log('here')
+      // res.send('duplicate email'); -> SyntaxError: Unexpected token d in JSON at position 0
+      res.send({message: 'duplicate email'})
+    } else {
+      console.log('or here')
+      await pool.query('INSERT INTO users(first_name, last_name, email, phone_number, password) VALUES($1, $2, $3, $4, $5)', [firstName, lastName, email, phoneNumber, hashedPassword]);
+      // return token to the frontend
+      res.send({
+        token: 'test123'
+      });
+    }
+    // res.status(201).send('Ok') -> Cannot set headers after they are sent to the client
   } catch(err) {
     console.error(err.message)
+    // The HyperText Transfer Protocol (HTTP) 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request. This error response is a generic "catch-all" response.
+    res.status(500).send()
   }
 })
 
 // post -> create a user session 
+
+/*
+TODO: make two seperate requests
+  1. to check email existence and send a response for that  (show error message in the frontend)
+  2. if email does exist then pull out the password into a variable
+
+  if (await bcrypt.compare(password, passwordInDatabase)) {
+    res.send('Succesful login)
+  } else {
+    res.status(403).send('incorrect password)               (show error message in the frontend)
+  }
+*/
+
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
@@ -125,12 +174,14 @@ app.post('/login', async (req, res) => {
     // if user exists -> rows: [ { email: 'mySecondLove', password: 'soulCoordinates' } ],
     // if user doesn't exists -> rows: []
     if (existingUser.rows[0]) {
-      res.send(existingUser.rows[0])
+      res.send(existingUser.rows[0]) // is this actually showing up in the console?
     } else {
-      res.status(404).json('this is not a registered entity');
+      //res.status(404).json('this is not a registered entity');
+      res.status(404).send('this is not a registered entity / cannot find this user');
     }
   } catch(err) {
     console.error(err.message)
+    res.status(500).send()
   }
 })
 

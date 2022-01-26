@@ -19,6 +19,8 @@ const initialFormState = {
     password: ''
 }
 
+// TODO: add 401 Unathorized if no token
+// TODO: add 403 Forbidden if the token is not correct
 async function loginUser(credentials) {
     return fetch('http://localhost:5000/users', {
       method: 'POST',
